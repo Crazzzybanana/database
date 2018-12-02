@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nickname</th>
+                <th scope="col">Level</th>
+                <th scope="col">Hp</th>
+                <th scope="col">Mp</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% r.forEach(function(item, i, r) {%>
+                <tr>
+                    <td><a href="/items/<%=item.id%>"><%=item.nickname%></a></td>
+                    <td><%=item.level%></td>
+                    <td><%=item.hp%></td>
+                    <td><%=item.mp%></td>
+                    <td>
+                        <form method="post" action="/characters/<%=id%>/delete">
+                            <button type="submit" name="id" value="<%=item.id%>" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <form method="post">
+        <div class="form-group">
+            <label for="nickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" placeholder="Nickname">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" formaction="/characters/<%=id%>">Add</button>
+        <button type="submit" class="btn btn-primary btn-lg" formaction="/characters/<%=id%>/update">Update</button>
+    </form>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
